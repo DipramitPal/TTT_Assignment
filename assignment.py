@@ -42,7 +42,7 @@ def show_list():
 		temp['count'] = frequency[words]
 		frequency_list.append(temp)
 	sorted_list = sorted(frequency_list,key=lambda words: words['count'],reverse=True)
-	return jsonify(sorted_list[:limit])
+	return json.dumps(list(sorted_list[:limit]))
 
 	
 # print(frequency)
