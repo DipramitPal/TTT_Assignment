@@ -3,7 +3,7 @@
 # response = requests.get("http://terriblytinytales.com/test.txt")
 # print(response.content)
 # import urllib2
-from urllib.request import urlopen
+import urllib
 from flask import jsonify
 from flask import Flask, render_template
 from flask import request
@@ -26,7 +26,7 @@ def show_list():
 		limit = int(content['count'])
 	except KeyError:
 		limit = 0
-	txt = urlopen("http://terriblytinytales.com/test.txt").read()
+	txt = urllib.request.urlopen("http://terriblytinytales.com/test.txt").read()
 	txt = txt.split()
 	frequency = {}
 	for word in txt:
