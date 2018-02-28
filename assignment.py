@@ -2,14 +2,19 @@
 
 # response = requests.get("http://terriblytinytales.com/test.txt")
 # print(response.content)
-import urllib2
+# import urllib2
 from flask import jsonify
-from flask import Flask
+from flask import Flask, render_template
 from flask import request
 from flask_cors import CORS, cross_origin
 _name_ = '_main_'
 app = Flask(_name_)
 CORS(app)
+
+@app.route("/",methods=["GET"])
+def index():
+    # ran = random.rand()
+    return render_template("index.html", ran=ran)
 
 @app.route('/words',methods = ['POST'])
 def show_list():
