@@ -14,7 +14,7 @@ CORS(app)
 @app.route("/",methods=["GET"])
 def index():
     # ran = random.rand()
-    return render_template("index.html", ran=ran)
+    return render_template("index.html")
 
 @app.route('/words',methods = ['POST'])
 def show_list():
