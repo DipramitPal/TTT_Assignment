@@ -25,7 +25,7 @@ def show_list():
 	content = request.get_json()
 	try:
 		limit = int(content['count'])
-		if(limit<0)
+		if limit<0:
 			limit = 0
 	except KeyError:
 		limit = 0
