@@ -8,10 +8,10 @@ from flask import jsonify
 from flask import Flask, render_template
 from flask import request
 # import sys
-# from flask_cors import CORS, cross_origin
+from flask_cors import CORS, cross_origin
 _name_ = '_main_'
 app = Flask(_name_)
-# CORS(app)
+CORS(app)
 
 @app.route("/",methods=["GET"])
 def index():
