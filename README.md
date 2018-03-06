@@ -1,6 +1,8 @@
    # Terribly Tiny Tales Assignment
 # https://assignmentttt.herokuapp.com
 
+## NOTE: Working Branch for Python3+ is python3
+
 **API Calls:**
 
 **POST** to /words
