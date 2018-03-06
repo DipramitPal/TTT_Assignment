@@ -3,14 +3,15 @@
 # response = requests.get("http://terriblytinytales.com/test.txt")
 # print(response.content)
 # import urllib2
-import urllib
+import urllib.request
 from flask import jsonify
 from flask import Flask, render_template
 from flask import request
-from flask_cors import CORS, cross_origin
+# import sys
+# from flask_cors import CORS, cross_origin
 _name_ = '_main_'
 app = Flask(_name_)
-CORS(app)
+# CORS(app)
 
 @app.route("/",methods=["GET"])
 def index():
@@ -20,14 +21,16 @@ def index():
 @app.route('/words',methods = ['POST'])
 def show_list():
 	print (request.headers)
-	# sys.exit()
+	
 	content = request.get_json()
 	try:
 		limit = int(content['count'])
 	except KeyError:
 		limit = 0
-	txt = urllib.request.urlopen("http://terriblytinytales.com/test.txt").read()
+	txt = urllib.request.urlopen("http://terriblytinytales.com/test.txt").read().decode('utf-8')
 	txt = txt.split()
+	print (txt)
+	# sys.exit()
 	frequency = {}
 	for word in txt:
 		word = word.lower()
@@ -42,7 +45,8 @@ def show_list():
 		temp['count'] = frequency[words]
 		frequency_list.append(temp)
 	sorted_list = sorted(frequency_list,key=lambda words: words['count'],reverse=True)
-	return json.dumps(list(sorted_list[:limit]))
+	
+	return jsonify(sorted_list[:limit])
 
 	
 # print(frequency)
